@@ -32,8 +32,8 @@ function func_WriteAndSolve_Riks(Nodes_imperfect, Elements_3D, Stress_Matrix, bo
     fprintf(fid, '%d, 0.0, 0.0, 0.0\n', rp_bottom_id);
     fprintf(fid, '%d, 0.0, 0.0, %.6f\n', rp_top_id, L);
     
-    % (3) 单元拓扑写入 (C3D8R)
-    fprintf(fid, '*Element, type=C3D8R, elset=All_Elements\n');
+    % (3) 单元拓扑写入 (C3D8I)
+    fprintf(fid, '*Element, type=C3D8I, elset=All_Elements\n');
     fprintf(fid, '%d, %d, %d, %d, %d, %d, %d, %d, %d\n', Elements_3D');
     
     % (4) 定义节点集 (严格应用 16 项换行限制，直接使用传入的纯净 ID)
