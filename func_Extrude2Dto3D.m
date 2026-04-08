@@ -9,7 +9,7 @@ function [Nodes_3D, Elements_3D] = func_Extrude2Dto3D(nodes_2d, elems_2d, L, mes
 %
 % 输出参数:
 %   Nodes_3D: 3D节点矩阵，维度 [N3, 4]，列定义为 [NodeID, X, Y, Z]
-%   Elements_3D: 3D单元拓扑矩阵 (C3D8R)，维度 [E3, 9]，列定义为 [ElemID, n1, n2, n3, n4, n5, n6, n7, n8]
+%   Elements_3D: 3D单元拓扑矩阵 (C3D8I)，维度 [E3, 9]，列定义为 [ElemID, n1, n2, n3, n4, n5, n6, n7, n8]
 
     % --- 0. 基础维度与离散参数计算 ---
     num_layers = round(L / mesh_z) + 1;       % Z向节点层数
@@ -52,7 +52,7 @@ function [Nodes_3D, Elements_3D] = func_Extrude2Dto3D(nodes_2d, elems_2d, L, mes
     conn_bottom = repmat(base_conn, num_elem_layers, 1) + offset_matrix;
     conn_top    = conn_bottom + N2;
 
-    % 拼接生成最终 C3D8R 单元拓扑矩阵 (底层1-2-3-4，顶层5-6-7-8)
+    % 拼接生成最终 C3D8I 单元拓扑矩阵 (底层1-2-3-4，顶层5-6-7-8)
     Elements_3D = [ElemIDs_3D, conn_bottom, conn_top];
 
 end
